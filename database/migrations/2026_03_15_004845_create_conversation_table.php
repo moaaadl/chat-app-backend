@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('conversation', function (Blueprint $table) {
             $table->id();
-            $table->string('msg')->default("baha zen");
+            $table->string('name');
             $table->timestamps();
         });
     }
