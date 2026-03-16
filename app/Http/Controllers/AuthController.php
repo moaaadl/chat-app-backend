@@ -29,4 +29,16 @@ class AuthController extends Controller
             'token' => $token,
         ], 201);
     }
+    public function login(Request $request){
+        $user = User::where("email",$request->email)->first();
+        if(!$user || !Hash::check($request->password , $user->password)){
+            return response()->json([
+                "message" => "invalid Informations"
+            ],401);
+        }
+        return response()->json([
+            "message" => "login success",
+            "user" => $user
+        ]);
+    }
 }
