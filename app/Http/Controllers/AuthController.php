@@ -69,4 +69,9 @@ class AuthController extends Controller
             200,
         );
     }
+    public function users(Request $request)
+{
+    $users = User::where('id', '!=', auth()->id())->latest()->get();
+    return response()->json($users);
+}
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\ConversationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,4 +17,6 @@ Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
 });
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/users',[AuthController::class, 'users']);
+    Route::post('/create',[ConversationController::class, 'create']);
 });
